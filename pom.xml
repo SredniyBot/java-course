@@ -7,13 +7,15 @@
   <packaging>pom</packaging>
   <name>25 Java Games — учебный курс</name>
   <properties>
-    <maven.compiler.release>25</maven.compiler.release>
+    <maven.compiler.release>21</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <junit.version>6.0.1</junit.version>
     <argLine/>
     <pit.skip>true</pit.skip>
   </properties>
   <modules>
+    <module>labs/testing</module>
+    <module>learning/scaffolding</module>
     <module>platform/desktop</module>
     <module>testing/fixtures</module>
     <module>games/star-courier</module>
@@ -100,7 +102,7 @@
             <configuration>
               <rules>
                 <requireJavaVersion>
-                  <version>[25,26)</version>
+                  <version>[21,22)</version>
                 </requireJavaVersion>
                 <requireMavenVersion>
                   <version>[3.9.9,4)</version>

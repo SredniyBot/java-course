@@ -25,7 +25,8 @@ public final class CaesarCipher {
     // TODO captain-cipher.shiftUppercase: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("captain-cipher.shiftUppercase");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "captain-cipher.shiftUppercase", () -> ch);
   }
 
   /**
@@ -47,6 +48,6 @@ public final class CaesarCipher {
     // TODO captain-cipher.encode: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("captain-cipher.encode");
+    return edu.course.learning.ExercisePreview.unfinished("captain-cipher.encode", () -> text);
   }
 }

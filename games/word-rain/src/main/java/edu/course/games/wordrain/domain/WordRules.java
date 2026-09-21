@@ -25,7 +25,7 @@ public final class WordRules {
     // TODO word-rain.normalizeInput: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("word-rain.normalizeInput");
+    return edu.course.learning.ExercisePreview.unfinished("word-rain.normalizeInput", () -> text);
   }
 
   /**
@@ -49,6 +49,6 @@ public final class WordRules {
     // TODO word-rain.isPrefix: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("word-rain.isPrefix");
+    return edu.course.learning.ExercisePreview.unfinished("word-rain.isPrefix", () -> false);
   }
 }

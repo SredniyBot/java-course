@@ -23,7 +23,8 @@ public final class MatchingRules {
     // TODO memory-cats.isMatchingPair: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("memory-cats.isMatchingPair");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "memory-cats.isMatchingPair", () -> false);
   }
 
   /**
@@ -44,6 +45,7 @@ public final class MatchingRules {
     // TODO memory-cats.countRevealedCards: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("memory-cats.countRevealedCards");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "memory-cats.countRevealedCards", () -> 0);
   }
 }

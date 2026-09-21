@@ -26,7 +26,8 @@ public final class WordMask {
     // TODO balloon-rescue.revealGuessedLetters: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("balloon-rescue.revealGuessedLetters");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "balloon-rescue.revealGuessedLetters", () -> "_ ".repeat(word.length()));
   }
 
   /**
@@ -50,6 +51,7 @@ public final class WordMask {
     // TODO balloon-rescue.isFullyGuessed: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("balloon-rescue.isFullyGuessed");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "balloon-rescue.isFullyGuessed", () -> false);
   }
 }

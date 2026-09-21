@@ -22,9 +22,10 @@ public final class PaddlePhysics {
    */
   public static boolean intersectsPaddle(double ballY, double top) {
     // TODO portal-pong.intersectsPaddle: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Управляемый отскок»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("portal-pong.intersectsPaddle");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "portal-pong.intersectsPaddle", () -> false);
   }
 
   /**
@@ -45,8 +46,9 @@ public final class PaddlePhysics {
    */
   public static double reflectedVerticalSpeed(double ballY, double top) {
     // TODO portal-pong.reflectedVerticalSpeed: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Управляемый отскок»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("portal-pong.reflectedVerticalSpeed");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "portal-pong.reflectedVerticalSpeed", () -> 0.0);
   }
 }

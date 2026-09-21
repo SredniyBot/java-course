@@ -8,7 +8,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <artifactId>ballistic-mail</artifactId>
-  <dependencies>
+  <dependencies><dependency><groupId>edu.course</groupId><artifactId>exercise-scaffolding</artifactId><version>${project.version}</version></dependency>
     <dependency>
       <groupId>edu.course</groupId>
       <artifactId>desktop-platform</artifactId>

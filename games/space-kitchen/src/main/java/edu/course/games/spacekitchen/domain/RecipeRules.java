@@ -24,7 +24,8 @@ public final class RecipeRules {
     // TODO space-kitchen.parseIngredients: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("space-kitchen.parseIngredients");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "space-kitchen.parseIngredients", () -> new String[] {line});
   }
 
   /**
@@ -47,6 +48,7 @@ public final class RecipeRules {
     // TODO space-kitchen.hasSameIngredients: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("space-kitchen.hasSameIngredients");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "space-kitchen.hasSameIngredients", () -> false);
   }
 }

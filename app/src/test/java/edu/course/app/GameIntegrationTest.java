@@ -58,10 +58,28 @@ class GameIntegrationTest {
             host.paint(graphics);
             assertEquals("", host.problem());
             host.press(37);
-            for (int i = 0; i < 3; i++) host.tick();
+            for (int i = 0; i < 120; i++) host.tick();
             host.release(37);
             host.tap(-100, -100, 1);
             host.type('A');
+            for (int key : new int[] {38, 39, 40, 32, 10, 8, 49, 90, 89}) {
+              host.press(key);
+              host.tick();
+              host.release(key);
+              assertEquals("", host.problem(), "key=" + key);
+            }
+            for (int[] point :
+                new int[][] {{80, 180}, {250, 270}, {450, 400}, {800, 550}, {959, 719}}) {
+              host.tap(point[0], point[1], 1);
+              host.tick();
+              host.paint(graphics);
+              assertEquals("", host.problem(), "click=" + java.util.Arrays.toString(point));
+            }
+            host.press(117);
+            host.tick();
+            host.press(117);
+            host.paint(graphics);
+            assertEquals("", host.problem());
             host.press(116);
             host.paint(graphics);
             assertEquals("", host.problem());

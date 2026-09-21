@@ -25,7 +25,8 @@ public final class UnicodeText {
     // TODO unicode-safari.countCodePoints: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("unicode-safari.countCodePoints");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "unicode-safari.countCodePoints", () -> 0);
   }
 
   /**
@@ -47,7 +48,7 @@ public final class UnicodeText {
     // TODO unicode-safari.utf8Length: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("unicode-safari.utf8Length");
+    return edu.course.learning.ExercisePreview.unfinished("unicode-safari.utf8Length", () -> 0);
   }
 
   /**
@@ -70,6 +71,7 @@ public final class UnicodeText {
     // TODO unicode-safari.prefixByCodePoints: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("unicode-safari.prefixByCodePoints");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "unicode-safari.prefixByCodePoints", () -> "");
   }
 }

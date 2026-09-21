@@ -24,7 +24,7 @@ public final class MinefieldRules {
     // TODO mars-mines.countAdjacentMines: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("mars-mines.countAdjacentMines");
+    return edu.course.learning.ExercisePreview.unfinished("mars-mines.countAdjacentMines", () -> 0);
   }
 
   /**
@@ -48,6 +48,7 @@ public final class MinefieldRules {
     // TODO mars-mines.allSafeCellsOpen: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("mars-mines.allSafeCellsOpen");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "mars-mines.allSafeCellsOpen", () -> false);
   }
 }

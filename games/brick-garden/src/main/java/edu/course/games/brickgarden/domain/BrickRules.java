@@ -23,9 +23,9 @@ public final class BrickRules {
    */
   public static int columnAt(double x) {
     // TODO brick-garden.columnAt: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Щели в кирпичной стене»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("brick-garden.columnAt");
+    return edu.course.learning.ExercisePreview.unfinished("brick-garden.columnAt", () -> -1);
   }
 
   /**
@@ -46,8 +46,8 @@ public final class BrickRules {
    */
   public static int countRemaining(int[][] board) {
     // TODO brick-garden.countRemaining: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Щели в кирпичной стене»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("brick-garden.countRemaining");
+    return edu.course.learning.ExercisePreview.unfinished("brick-garden.countRemaining", () -> 0);
   }
 }

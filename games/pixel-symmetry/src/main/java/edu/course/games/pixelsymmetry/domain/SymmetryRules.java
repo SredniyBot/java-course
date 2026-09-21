@@ -23,7 +23,7 @@ public final class SymmetryRules {
     // TODO pixel-symmetry.paintCell: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("pixel-symmetry.paintCell");
+    edu.course.learning.ExercisePreview.unfinished("pixel-symmetry.paintCell", () -> null);
   }
 
   /**
@@ -46,7 +46,7 @@ public final class SymmetryRules {
     // TODO pixel-symmetry.mirrorLeftToRight: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("pixel-symmetry.mirrorLeftToRight");
+    edu.course.learning.ExercisePreview.unfinished("pixel-symmetry.mirrorLeftToRight", () -> null);
   }
 
   /**
@@ -68,6 +68,7 @@ public final class SymmetryRules {
     // TODO pixel-symmetry.isHorizontallySymmetric: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("pixel-symmetry.isHorizontallySymmetric");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "pixel-symmetry.isHorizontallySymmetric", () -> false);
   }
 }

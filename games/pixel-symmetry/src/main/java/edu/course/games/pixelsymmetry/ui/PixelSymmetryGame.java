@@ -22,7 +22,7 @@ public final class PixelSymmetryGame implements DesktopGame {
     return new GameDescriptor(
         "13. Мастерская симметрии",
         "Нарисуйте симметричный узор минимум из 20 цветных пикселей.",
-        "Мышь — кисть; 1–4 — цвет; M — отражение; Enter — проверить");
+        "Мышь — кисть; 1–4 или палитра — цвет; M — отражение; Enter — проверка");
   }
 
   @Override
@@ -51,6 +51,14 @@ public final class PixelSymmetryGame implements DesktopGame {
 
   @Override
   public void onMousePressed(int mx, int my, int button) {
+    if (button != 1) return;
+    if (mx >= 35 && mx < 125 && my >= 165) {
+      int index = (my - 165) / 65;
+      if (index < 4 && (my - 165) % 65 < 45) {
+        color = index + 1;
+        return;
+      }
+    }
     SymmetryRules.paintCell(
         pixels, Math.floorDiv(my - 140, 38), Math.floorDiv(mx - 160, 40), color);
   }

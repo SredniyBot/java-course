@@ -21,7 +21,7 @@ public final class ColorFloodGame implements DesktopGame {
     return new GameDescriptor(
         "14. Цветной прилив",
         "Залейте всё поле одним цветом за 24 хода, начиная сверху слева.",
-        "Клавиши 1–4 выбирают цвет");
+        "1–4 или палитра слева — выбрать цвет");
   }
 
   @Override
@@ -35,6 +35,13 @@ public final class ColorFloodGame implements DesktopGame {
   @Override
   public void render(Graphics2D g) {
     ColorFloodRenderer.draw(g, board, moves);
+  }
+
+  @Override
+  public void onMousePressed(int x, int y, int button) {
+    if (button != 1 || x < 35 || x >= 185 || y < 220) return;
+    int index = (y - 220) / 60;
+    if (index < 4 && (y - 220) % 60 < 44) onKeyPressed(49 + index);
   }
 
   @Override

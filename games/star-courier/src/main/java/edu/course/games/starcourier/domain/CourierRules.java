@@ -22,9 +22,10 @@ public final class CourierRules {
    */
   public static double clampCoordinate(double value, double min, double max) {
     // TODO star-courier.clampCoordinate: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Груз у кромки экрана»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("star-courier.clampCoordinate");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "star-courier.clampCoordinate", () -> (min + max) / 2);
   }
 
   /**
@@ -46,8 +47,9 @@ public final class CourierRules {
    */
   public static boolean isWithinRadius(double x, double y, double tx, double ty, double radius) {
     // TODO star-courier.isWithinRadius: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Груз у кромки экрана»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("star-courier.isWithinRadius");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "star-courier.isWithinRadius", () -> false);
   }
 }

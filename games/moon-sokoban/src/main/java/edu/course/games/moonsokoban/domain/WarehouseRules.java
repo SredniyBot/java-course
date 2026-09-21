@@ -26,7 +26,7 @@ public final class WarehouseRules {
     // TODO moon-sokoban.tryPushBox: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("moon-sokoban.tryPushBox");
+    return edu.course.learning.ExercisePreview.unfinished("moon-sokoban.tryPushBox", () -> false);
   }
 
   /**
@@ -49,6 +49,7 @@ public final class WarehouseRules {
     // TODO moon-sokoban.allGoalsOccupied: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("moon-sokoban.allGoalsOccupied");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "moon-sokoban.allGoalsOccupied", () -> false);
   }
 }

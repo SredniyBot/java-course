@@ -4,6 +4,7 @@ import static edu.course.platform.desktop.GameDrawing.BLUE;
 import static edu.course.platform.desktop.GameDrawing.GOLD;
 import static edu.course.platform.desktop.GameDrawing.WHITE;
 import static edu.course.platform.desktop.GameDrawing.box;
+import static edu.course.platform.desktop.GameDrawing.centered;
 import static edu.course.platform.desktop.GameDrawing.text;
 
 import java.awt.Graphics2D;
@@ -18,7 +19,7 @@ final class UnicodeSafariRenderer {
     for (int i = 0; i < 6; i++) {
       int x = 135 + (i % 3) * 240, y = 260 + (i / 3) * 140;
       box(g, x, y, 215, 115, BLUE);
-      text(g, labels[i], x + 40, y + 60, 32, WHITE);
+      centered(g, labels[i], x, y, 215, 115, 32, WHITE);
     }
     text(g, "Поймано: " + score + " / 10", 170, 590, 23, WHITE);
   }

@@ -25,7 +25,8 @@ public final class RobotRules {
     // TODO factory-robot.nextDirection: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("factory-robot.nextDirection");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "factory-robot.nextDirection", () -> direction);
   }
 
   /**
@@ -49,7 +50,8 @@ public final class RobotRules {
     // TODO factory-robot.nextCell: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("factory-robot.nextCell");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "factory-robot.nextCell", () -> new Cell(row, col));
   }
 
   /**
@@ -74,6 +76,7 @@ public final class RobotRules {
     // TODO factory-robot.isValidProgram: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("factory-robot.isValidProgram");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "factory-robot.isValidProgram", () -> false);
   }
 }

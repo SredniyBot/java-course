@@ -1,0 +1,7 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"><modelVersion>4.0.0</modelVersion>
+ <parent><groupId>edu.course</groupId><artifactId>java-games-course</artifactId><version>1.0.0</version><relativePath>../../pom.xml</relativePath></parent>
+ <artifactId>testing-lab</artifactId><properties><pit.skip>false</pit.skip></properties>
+ <profiles><profile><id>mutation</id><build><plugins><plugin><groupId>org.pitest</groupId><artifactId>pitest-maven</artifactId>
+ <configuration><targetClasses><param>edu.course.labs.testing.FuelTransfer</param></targetClasses>
+ <targetTests><param>edu.course.labs.testing.*Test</param></targetTests><mutationThreshold>0</mutationThreshold></configuration>
+ </plugin></plugins></build></profile></profiles></project>

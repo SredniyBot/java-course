@@ -8,5 +8,5 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
   <artifactId>desktop-platform</artifactId>
-  <dependencies/>
+  <dependencies><dependency><groupId>edu.course</groupId><artifactId>exercise-scaffolding</artifactId><version>${project.version}</version></dependency></dependencies>
 </project>

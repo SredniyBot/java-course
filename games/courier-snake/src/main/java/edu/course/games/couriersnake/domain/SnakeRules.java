@@ -24,9 +24,9 @@ public final class SnakeRules {
    */
   public static void advanceBody(int[] xs, int[] ys, int length, int nx, int ny) {
     // TODO courier-snake.advanceBody: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Движущийся хвост»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("courier-snake.advanceBody");
+    edu.course.learning.ExercisePreview.unfinished("courier-snake.advanceBody", () -> null);
   }
 
   /**
@@ -47,8 +47,9 @@ public final class SnakeRules {
    */
   public static boolean occupiesCell(int[] xs, int[] ys, int length, int x, int y) {
     // TODO courier-snake.occupiesCell: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Движущийся хвост»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("courier-snake.occupiesCell");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "courier-snake.occupiesCell", () -> false);
   }
 }

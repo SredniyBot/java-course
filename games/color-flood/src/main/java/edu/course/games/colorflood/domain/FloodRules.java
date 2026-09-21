@@ -26,7 +26,7 @@ public final class FloodRules {
     // TODO color-flood.fillFromOrigin: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("color-flood.fillFromOrigin");
+    edu.course.learning.ExercisePreview.unfinished("color-flood.fillFromOrigin", () -> null);
   }
 
   /**
@@ -48,6 +48,6 @@ public final class FloodRules {
     // TODO color-flood.isUniform: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("color-flood.isUniform");
+    return edu.course.learning.ExercisePreview.unfinished("color-flood.isUniform", () -> false);
   }
 }

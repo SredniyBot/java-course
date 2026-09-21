@@ -25,7 +25,7 @@ public final class TileRules {
     // TODO cats-256.mergeLeft: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("cats-256.mergeLeft");
+    return edu.course.learning.ExercisePreview.unfinished("cats-256.mergeLeft", () -> row.clone());
   }
 
   /**
@@ -47,6 +47,8 @@ public final class TileRules {
     // TODO cats-256.rotateClockwise: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("cats-256.rotateClockwise");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "cats-256.rotateClockwise",
+        () -> java.util.Arrays.stream(a).map(int[]::clone).toArray(int[][]::new));
   }
 }

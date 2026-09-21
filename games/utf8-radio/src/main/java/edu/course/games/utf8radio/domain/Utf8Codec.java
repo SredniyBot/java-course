@@ -23,7 +23,7 @@ public final class Utf8Codec {
     // TODO utf8-radio.toUnsigned: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("utf8-radio.toUnsigned");
+    return edu.course.learning.ExercisePreview.unfinished("utf8-radio.toUnsigned", () -> 0);
   }
 
   /**
@@ -48,6 +48,7 @@ public final class Utf8Codec {
     // TODO utf8-radio.decodePrefix: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("utf8-radio.decodePrefix");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "utf8-radio.decodePrefix", () -> "<не реализовано>");
   }
 }

@@ -109,4 +109,15 @@ class ArchitectureTest {
             .filter(type -> type.isAssignableTo(DesktopGame.class) && !type.isInterface())
             .count());
   }
+
+  @Test
+  void scaffoldingKnowsNeitherDomainNorUi() {
+    noClasses()
+        .that()
+        .resideInAPackage("edu.course.learning..")
+        .should()
+        .dependOnClassesThat()
+        .resideInAnyPackage("..games..", "..platform..", "..app..")
+        .check(productionClasses);
+  }
 }

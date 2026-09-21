@@ -1,88 +1,189 @@
 package edu.course.app;
 
-import edu.course.platform.desktop.DesktopGame;
-import edu.course.platform.desktop.GameSession;
 import edu.course.platform.desktop.GameWindow;
 import java.util.List;
-import java.util.function.Function;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public final class Launcher {
   private Launcher() {}
 
-  private record Entry(String label, Function<GameSession, DesktopGame> factory) {}
+  public static List<GameEntry> games() {
+    return List.of(
+        new GameEntry(
+            1,
+            "star-courier",
+            "Звёздный курьер",
+            "Границы и геометрия",
+            edu.course.games.starcourier.ui.StarCourierGame::new),
+        new GameEntry(
+            2,
+            "moon-lander",
+            "Лунная доставка",
+            "Скорость и условия",
+            edu.course.games.moonlander.ui.MoonLanderGame::new),
+        new GameEntry(
+            3,
+            "cloud-jumper",
+            "Облачный прыгун",
+            "Состояние между кадрами",
+            edu.course.games.cloudjumper.ui.CloudJumperGame::new),
+        new GameEntry(
+            4,
+            "portal-pong",
+            "Пинг-понг с порталом",
+            "Свойства и симметрия",
+            edu.course.games.portalpong.ui.PortalPongGame::new),
+        new GameEntry(
+            5,
+            "brick-garden",
+            "Кирпичный сад",
+            "Индексы и интервалы",
+            edu.course.games.brickgarden.ui.BrickGardenGame::new),
+        new GameEntry(
+            6,
+            "courier-snake",
+            "Змейка-курьер",
+            "Массивы и мутация",
+            edu.course.games.couriersnake.ui.CourierSnakeGame::new),
+        new GameEntry(
+            7,
+            "lunar-tetris",
+            "Тетрис: стройка на Луне",
+            "Матрицы и копирование",
+            edu.course.games.lunartetris.ui.LunarTetrisGame::new),
+        new GameEntry(
+            8,
+            "mars-mines",
+            "Сапёр на Марсе",
+            "Границы и перебор",
+            edu.course.games.marsmines.ui.MarsMinesGame::new),
+        new GameEntry(
+            9,
+            "memory-cats",
+            "Котики-близнецы",
+            "Равенство и состояния",
+            edu.course.games.memorycats.ui.MemoryCatsGame::new),
+        new GameEntry(
+            10,
+            "word-rain",
+            "Словопад",
+            "Строки и нормализация",
+            edu.course.games.wordrain.ui.WordRainGame::new),
+        new GameEntry(
+            11,
+            "balloon-rescue",
+            "Спасите воздушный шар",
+            "Множества и команды",
+            edu.course.games.balloonrescue.ui.BalloonRescueGame::new),
+        new GameEntry(
+            12,
+            "word-maze",
+            "Буквенный лабиринт",
+            "Маршруты и история",
+            edu.course.games.wordmaze.ui.WordMazeGame::new),
+        new GameEntry(
+            13,
+            "pixel-symmetry",
+            "Мастерская симметрии",
+            "Команды и отражение",
+            edu.course.games.pixelsymmetry.ui.PixelSymmetryGame::new),
+        new GameEntry(
+            14,
+            "color-flood",
+            "Цветной прилив",
+            "Заливка и обход графа",
+            edu.course.games.colorflood.ui.ColorFloodGame::new),
+        new GameEntry(
+            15,
+            "lights-out",
+            "Ночной город",
+            "Пакеты и атомарность",
+            edu.course.games.lightsout.ui.LightsOutGame::new),
+        new GameEntry(
+            16,
+            "cats-256",
+            "Котики 256",
+            "Слияния и результаты",
+            edu.course.games.cats256.ui.Cats256Game::new),
+        new GameEntry(
+            17,
+            "moon-sokoban",
+            "Склад лунного сыра",
+            "Слои и отмена хода",
+            edu.course.games.moonsokoban.ui.MoonSokobanGame::new),
+        new GameEntry(
+            18,
+            "laser-mail",
+            "Лазерная почта",
+            "Трассировка и циклы",
+            edu.course.games.lasermail.ui.LaserMailGame::new),
+        new GameEntry(
+            19,
+            "time-canvas",
+            "Холст времени",
+            "Снимки и транзакции",
+            edu.course.games.timecanvas.ui.TimeCanvasGame::new),
+        new GameEntry(
+            20,
+            "space-kitchen",
+            "Космическая кухня",
+            "Парсинг и кратность",
+            edu.course.games.spacekitchen.ui.SpaceKitchenGame::new),
+        new GameEntry(
+            21,
+            "unicode-safari",
+            "Unicode-сафари",
+            "Unicode и бюджет",
+            edu.course.games.unicodesafari.ui.UnicodeSafariGame::new),
+        new GameEntry(
+            22,
+            "utf8-radio",
+            "Радио UTF-8",
+            "UTF-8 и протокол",
+            edu.course.games.utf8radio.ui.Utf8RadioGame::new),
+        new GameEntry(
+            23,
+            "captain-cipher",
+            "Шифр капитана",
+            "Переполнение и формат",
+            edu.course.games.captaincipher.ui.CaptainCipherGame::new),
+        new GameEntry(
+            24,
+            "ballistic-mail",
+            "Баллистическая почта",
+            "Модель и воспроизведение",
+            edu.course.games.ballisticmail.ui.BallisticMailGame::new),
+        new GameEntry(
+            25,
+            "factory-robot",
+            "Робот на заводе",
+            "Язык команд и лимиты",
+            edu.course.games.factoryrobot.ui.FactoryRobotGame::new));
+  }
 
   public static void main(String[] args) {
-    List<Entry> games =
-        List.of(
-            new Entry("01. Звёздный курьер", edu.course.games.starcourier.ui.StarCourierGame::new),
-            new Entry("02. Лунная доставка", edu.course.games.moonlander.ui.MoonLanderGame::new),
-            new Entry("03. Облачный прыгун", edu.course.games.cloudjumper.ui.CloudJumperGame::new),
-            new Entry(
-                "04. Пинг-понг с порталом", edu.course.games.portalpong.ui.PortalPongGame::new),
-            new Entry("05. Кирпичный сад", edu.course.games.brickgarden.ui.BrickGardenGame::new),
-            new Entry("06. Змейка-курьер", edu.course.games.couriersnake.ui.CourierSnakeGame::new),
-            new Entry(
-                "07. Тетрис: стройка на Луне",
-                edu.course.games.lunartetris.ui.LunarTetrisGame::new),
-            new Entry("08. Сапёр на Марсе", edu.course.games.marsmines.ui.MarsMinesGame::new),
-            new Entry("09. Котики-близнецы", edu.course.games.memorycats.ui.MemoryCatsGame::new),
-            new Entry("10. Словопад", edu.course.games.wordrain.ui.WordRainGame::new),
-            new Entry(
-                "11. Спасите воздушный шар",
-                edu.course.games.balloonrescue.ui.BalloonRescueGame::new),
-            new Entry("12. Буквенный лабиринт", edu.course.games.wordmaze.ui.WordMazeGame::new),
-            new Entry(
-                "13. Мастерская симметрии",
-                edu.course.games.pixelsymmetry.ui.PixelSymmetryGame::new),
-            new Entry("14. Цветной прилив", edu.course.games.colorflood.ui.ColorFloodGame::new),
-            new Entry("15. Ночной город", edu.course.games.lightsout.ui.LightsOutGame::new),
-            new Entry("16. Котики 256", edu.course.games.cats256.ui.Cats256Game::new),
-            new Entry(
-                "17. Склад лунного сыра", edu.course.games.moonsokoban.ui.MoonSokobanGame::new),
-            new Entry("18. Лазерная почта", edu.course.games.lasermail.ui.LaserMailGame::new),
-            new Entry("19. Холст времени", edu.course.games.timecanvas.ui.TimeCanvasGame::new),
-            new Entry(
-                "20. Космическая кухня", edu.course.games.spacekitchen.ui.SpaceKitchenGame::new),
-            new Entry(
-                "21. Unicode-сафари", edu.course.games.unicodesafari.ui.UnicodeSafariGame::new),
-            new Entry("22. Радио UTF-8", edu.course.games.utf8radio.ui.Utf8RadioGame::new),
-            new Entry(
-                "23. Шифр капитана", edu.course.games.captaincipher.ui.CaptainCipherGame::new),
-            new Entry(
-                "24. Баллистическая почта",
-                edu.course.games.ballisticmail.ui.BallisticMailGame::new),
-            new Entry(
-                "25. Робот на заводе", edu.course.games.factoryrobot.ui.FactoryRobotGame::new));
+    List<GameEntry> entries = games();
+    if (args.length > 1) throw new IllegalArgumentException("Usage: java -jar app.jar [1..25]");
     if (args.length == 1) {
       int number;
       try {
         number = Integer.parseInt(args[0]);
-      } catch (NumberFormatException e) {
-        throw new IllegalArgumentException("DesktopGame number must be 1..25", e);
+      } catch (NumberFormatException ex) {
+        throw new IllegalArgumentException("Game number must be 1..25", ex);
       }
-      if (number < 1 || number > games.size())
-        throw new IllegalArgumentException("DesktopGame number must be 1..25");
-      GameWindow.open(games.get(number - 1).factory());
+      if (number < 1 || number > entries.size())
+        throw new IllegalArgumentException("Game number must be 1..25");
+      GameWindow.open(entries.get(number - 1).factory());
       return;
     }
-    if (args.length > 1)
-      throw new IllegalArgumentException("Usage: java -jar launcher.jar [1..25]");
     SwingUtilities.invokeLater(
         () -> {
-          JFrame window = new JFrame("Java — 25 игр");
-          JPanel panel = new JPanel(new java.awt.GridLayout(0, 2, 8, 8));
-          for (Entry entry : games) {
-            JButton button = new JButton(entry.label());
-            button.addActionListener(e -> GameWindow.open(entry.factory()));
-            panel.add(button);
-          }
-          window.setContentPane(panel);
+          JFrame window = new JFrame("Java Course · Игровая практика");
+          window.setContentPane(new CourseMenu(entries, e -> GameWindow.open(e.factory())));
           window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-          window.pack();
+          window.setSize(1100, 820);
+          window.setMinimumSize(new java.awt.Dimension(1000, 680));
           window.setLocationRelativeTo(null);
           window.setVisible(true);
         });

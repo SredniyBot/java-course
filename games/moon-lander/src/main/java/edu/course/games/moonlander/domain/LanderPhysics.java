@@ -24,9 +24,10 @@ public final class LanderPhysics {
    */
   public static double nextVerticalSpeed(double current, boolean engine, double dt) {
     // TODO moon-lander.nextVerticalSpeed: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Посадка по приборам»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("moon-lander.nextVerticalSpeed");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "moon-lander.nextVerticalSpeed", () -> 0.0);
   }
 
   /**
@@ -47,8 +48,8 @@ public final class LanderPhysics {
    */
   public static boolean isSafeLanding(double x, double nextVerticalSpeed) {
     // TODO moon-lander.isSafeLanding: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Посадка по приборам»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("moon-lander.isSafeLanding");
+    return edu.course.learning.ExercisePreview.unfinished("moon-lander.isSafeLanding", () -> false);
   }
 }

@@ -25,7 +25,8 @@ public final class CanvasRules {
     // TODO time-canvas.copyPixels: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("time-canvas.copyPixels");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "time-canvas.copyPixels", () -> new int[a.length][a[0].length]);
   }
 
   /**
@@ -46,7 +47,8 @@ public final class CanvasRules {
     // TODO time-canvas.countDifferences: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("time-canvas.countDifferences");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "time-canvas.countDifferences", () -> a.length * a[0].length);
   }
 
   /**
@@ -71,6 +73,7 @@ public final class CanvasRules {
     // TODO time-canvas.hasPreviousSnapshot: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("time-canvas.hasPreviousSnapshot");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "time-canvas.hasPreviousSnapshot", () -> false);
   }
 }

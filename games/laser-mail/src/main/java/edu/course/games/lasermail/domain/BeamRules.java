@@ -25,7 +25,8 @@ public final class BeamRules {
     // TODO laser-mail.reflectDirection: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("laser-mail.reflectDirection");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "laser-mail.reflectDirection", () -> direction);
   }
 
   /**
@@ -48,6 +49,6 @@ public final class BeamRules {
     // TODO laser-mail.isInsideGrid: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("laser-mail.isInsideGrid");
+    return edu.course.learning.ExercisePreview.unfinished("laser-mail.isInsideGrid", () -> false);
   }
 }

@@ -25,7 +25,8 @@ public final class WordPathRules {
     // TODO word-maze.areSideNeighbors: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("word-maze.areSideNeighbors");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "word-maze.areSideNeighbors", () -> false);
   }
 
   /**
@@ -49,6 +50,6 @@ public final class WordPathRules {
     // TODO word-maze.readPath: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("word-maze.readPath");
+    return edu.course.learning.ExercisePreview.unfinished("word-maze.readPath", () -> "");
   }
 }

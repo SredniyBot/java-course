@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '25'
+          java-version: '21'
           cache: maven
       - name: Compile production and tests; check formatting (Linux)
         if: runner.os != 'Windows'
@@ -22,3 +22,9 @@ jobs:
       - name: Compile production and tests; check formatting (Windows)
         if: runner.os == 'Windows'
         run: .\mvnw.cmd -B -ntp -DskipTests clean package spotless:check
+      - name: Preview, platform, architecture and lab smoke tests (Linux)
+        if: runner.os != 'Windows'
+        run: ./mvnw -B -ntp '-Dtest=ExercisePreviewTest,GamePanelTest,ArchitectureTest,GameIntegrationTest,CourseMenuTest,FuelTransferTest' '-Dsurefire.failIfNoSpecifiedTests=false' test
+      - name: Preview, platform, architecture and lab smoke tests (Windows)
+        if: runner.os == 'Windows'
+        run: .\mvnw.cmd -B -ntp '-Dtest=ExercisePreviewTest,GamePanelTest,ArchitectureTest,GameIntegrationTest,CourseMenuTest,FuelTransferTest' '-Dsurefire.failIfNoSpecifiedTests=false' test

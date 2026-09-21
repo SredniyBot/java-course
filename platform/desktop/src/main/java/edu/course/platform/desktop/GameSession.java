@@ -1,9 +1,16 @@
 package edu.course.platform.desktop;
 
+import edu.course.learning.ExercisePreview;
 import java.util.Random;
 
 /** Mutable state belongs to one session. No shared random, input or score. EDT confined. */
 public final class GameSession {
+  private final ExercisePreview preview = new ExercisePreview();
+
+  public ExercisePreview preview() {
+    return preview;
+  }
+
   private final long seed;
   private final Random random;
   private final boolean[] down = new boolean[600];
@@ -45,8 +52,9 @@ public final class GameSession {
   }
 
   public void end(String message) {
-    status(message);
-    finished = true;
+    status(
+        preview.incomplete() ? "Демо: завершение не засчитывается; реализуйте методы." : message);
+    finished = !preview.incomplete();
   }
 
   public int held(int key) {
@@ -62,6 +70,7 @@ public final class GameSession {
   }
 
   void reset() {
+    preview.reset();
     score = 0;
     finished = false;
     status = "";

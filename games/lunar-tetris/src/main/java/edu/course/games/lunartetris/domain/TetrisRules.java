@@ -24,7 +24,9 @@ public final class TetrisRules {
     // TODO lunar-tetris.rotateClockwise: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("lunar-tetris.rotateClockwise");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "lunar-tetris.rotateClockwise",
+        () -> java.util.Arrays.stream(a).map(int[]::clone).toArray(int[][]::new));
   }
 
   /**
@@ -49,7 +51,7 @@ public final class TetrisRules {
     // TODO lunar-tetris.canPlace: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("lunar-tetris.canPlace");
+    return edu.course.learning.ExercisePreview.unfinished("lunar-tetris.canPlace", () -> false);
   }
 
   /**
@@ -72,6 +74,6 @@ public final class TetrisRules {
     // TODO lunar-tetris.removeFullRows: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("lunar-tetris.removeFullRows");
+    return edu.course.learning.ExercisePreview.unfinished("lunar-tetris.removeFullRows", () -> 0);
   }
 }

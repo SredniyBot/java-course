@@ -25,7 +25,8 @@ public final class TrajectoryPhysics {
     // TODO ballistic-mail.initialVelocity: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("ballistic-mail.initialVelocity");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "ballistic-mail.initialVelocity", () -> new Velocity(0, 0));
   }
 
   /**
@@ -47,6 +48,7 @@ public final class TrajectoryPhysics {
     // TODO ballistic-mail.isWithinTarget: реализуйте WHAT/contract из Javadoc выше.
     // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("ballistic-mail.isWithinTarget");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "ballistic-mail.isWithinTarget", () -> false);
   }
 }

@@ -80,7 +80,7 @@ class GamePanelTest {
   }
 
   @Test
-  void unfinishedExerciseStopsUpdatesButRestartClearsError() throws Exception {
+  void realUnsupportedOperationIsNotSilentlyReplacedByDemo() throws Exception {
     SwingUtilities.invokeAndWait(
         () -> {
           GamePanel host =
@@ -98,6 +98,65 @@ class GamePanelTest {
           assertTrue(host.problem().contains("exercise"));
           host.restart();
           assertEquals("", host.problem());
+        });
+  }
+
+  @Test
+  void demoKeepsUpdatingButCannotClaimCompletion() throws Exception {
+    SwingUtilities.invokeAndWait(
+        () -> {
+          AtomicReference<Probe> ref = new AtomicReference<>();
+          GamePanel host =
+              new GamePanel(
+                  c -> {
+                    Probe game =
+                        new Probe(c) {
+                          @Override
+                          public void update(double dt) {
+                            steps++;
+                            edu.course.learning.ExercisePreview.unfinished("probe.task", () -> 0);
+                            context.end("won");
+                          }
+                        };
+                    ref.set(game);
+                    return game;
+                  },
+                  1);
+          host.restart();
+          host.tick();
+          host.tick();
+          assertEquals(2, ref.get().steps);
+          assertFalse(host.done());
+          assertEquals("", host.problem());
+          assertEquals(java.util.List.of("probe.task"), host.missingTasks());
+          host.restart();
+          assertTrue(host.missingTasks().isEmpty());
+        });
+  }
+
+  @Test
+  void helpSuspendsUpdatesAndClearsHeldInput() throws Exception {
+    SwingUtilities.invokeAndWait(
+        () -> {
+          AtomicReference<Probe> ref = new AtomicReference<>();
+          GamePanel host =
+              new GamePanel(
+                  c -> {
+                    Probe p = new Probe(c);
+                    ref.set(p);
+                    return p;
+                  },
+                  1);
+          host.restart();
+          host.press(37);
+          assertEquals(1, ref.get().context.held(37));
+          host.press(112);
+          host.tick();
+          assertEquals(0, ref.get().steps);
+          assertEquals(0, ref.get().context.held(37));
+          host.press(112);
+          host.tick();
+          assertEquals(1, ref.get().steps);
         });
   }
 }

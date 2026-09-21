@@ -25,9 +25,10 @@ public final class PlatformRules {
   public static boolean crossesPlatform(
       double oldBottom, double newBottom, double vy, double x, int platformX, double platformY) {
     // TODO cloud-jumper.crossesPlatform: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Платформа между кадрами»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("cloud-jumper.crossesPlatform");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "cloud-jumper.crossesPlatform", () -> false);
   }
 
   /**
@@ -50,8 +51,9 @@ public final class PlatformRules {
    */
   public static double wrapHorizontal(double x, double width) {
     // TODO cloud-jumper.wrapHorizontal: реализуйте WHAT/contract из Javadoc выше.
-    // Сначала вычислите examples вручную, затем реализуйте формулу/условия контракта.
+    // Исследование «Платформа между кадрами»: сценарий и обязательная новая часть — README.md.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("cloud-jumper.wrapHorizontal");
+    return edu.course.learning.ExercisePreview.unfinished(
+        "cloud-jumper.wrapHorizontal", () -> width / 2);
   }
 }

@@ -16,6 +16,15 @@ final class PixelSymmetryRenderer {
     for (int r = 0; r < 12; r++)
       for (int c = 0; c < 16; c++)
         box(g, 160 + c * 40, 140 + r * 38, 37, 35, palette(pixels[r][c]));
-    text(g, "Цвет: " + color, 35, 135, 20, WHITE);
+    text(g, "Кисть", 35, 135, 18, WHITE);
+    for (int value = 1; value <= 4; value++) {
+      box(g, 35, 165 + (value - 1) * 65, 90, 45, palette(value));
+      edu.course.platform.desktop.GameDrawing.centered(
+          g, "" + value, 35, 165 + (value - 1) * 65, 90, 45, 18, WHITE);
+      if (value == color) {
+        g.setColor(edu.course.platform.desktop.GameDrawing.CYAN);
+        g.drawRoundRect(32, 162 + (value - 1) * 65, 96, 51, 12, 12);
+      }
+    }
   }
 }

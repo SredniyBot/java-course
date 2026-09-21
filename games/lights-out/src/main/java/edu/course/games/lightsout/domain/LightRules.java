@@ -25,7 +25,7 @@ public final class LightRules {
     // TODO lights-out.toggleCross: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("lights-out.toggleCross");
+    edu.course.learning.ExercisePreview.unfinished("lights-out.toggleCross", () -> null);
   }
 
   /**
@@ -47,6 +47,6 @@ public final class LightRules {
     // TODO lights-out.allLightsOff: реализуйте WHAT/contract из Javadoc выше.
     // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
     // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    throw new UnsupportedOperationException("lights-out.allLightsOff");
+    return edu.course.learning.ExercisePreview.unfinished("lights-out.allLightsOff", () -> false);
   }
 }
