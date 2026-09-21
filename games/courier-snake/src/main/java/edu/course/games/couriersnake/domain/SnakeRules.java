@@ -1,55 +1,46 @@
 package edu.course.games.couriersnake.domain;
 
-/** Змейка-курьер. Правила игры. Контракты упражнений: README.md. */
+/** Змейка-курьер: операции над игровыми данными без интерфейса. */
 public final class SnakeRules {
   private SnakeRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Сдвинуть первые length элементов вправо и записать новую голову в [0].
-   * Сдвиг справа налево; length&gt;=1.
+   * Перемещает тело змейки на один ход. Новая голова записывается в индекс 0; каждый следующий
+   * активный сегмент получает прежние координаты предыдущего. Неактивный хвост массивов
+   * сохраняется.
    *
-   * <p><b>Constraints:</b> xs, ys не null и не один объект; 1 ≤ length ≤ min(xs.length,ys.length);
-   * любые int координаты.
+   * <p>При недопустимых аргументах бросает исключение до изменения любого из массивов. Ссылки на
+   * массивы должны различаться.
    *
-   * <p><b>Examples:</b> xs=[3,2,1,99], ys=[4,4,4,88], length=3, новая голова=(4,4) → xs=[4,3,2,99],
-   * ys без изменений.
-   *
-   * <p><b>Acceptance criteria:</b> O(length), O(1) доп. памяти; точные границы и отсутствие лишней
-   * мутации. Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Сдвиг слева направо затирает тело. Хвост массивов с index≥length не
-   * менять.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param xs x сегментов, начиная с головы
+   * @param ys y сегментов, начиная с головы
+   * @param length число активных сегментов
+   * @param nx x новой головы
+   * @param ny y новой головы
+   * @throws NullPointerException если xs или ys равен null
+   * @throws IllegalArgumentException если массивы совпадают по ссылке или length вне диапазона
+   *     1..min(xs.length, ys.length)
    */
   public static void advanceBody(int[] xs, int[] ys, int length, int nx, int ny) {
-    // TODO courier-snake.advanceBody: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Движущийся хвост»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO courier-snake.advanceBody: реализуйте действие по контракту выше.
     edu.course.learning.ExercisePreview.unfinished("courier-snake.advanceBody", () -> null);
   }
 
   /**
-   * <b>WHAT / contract:</b> Есть ли координата (x,y) среди первых length элементов. length может
-   * быть 0.
+   * Проверяет, занята ли клетка одним из первых length сегментов. Координаты x и y должны совпадать
+   * у одного сегмента; неактивный хвост не учитывается.
    *
-   * <p><b>Constraints:</b> xs, ys не null; 0 ≤ length ≤ min длин.
+   * <p>xs, ys не null; 0 ≤ length ≤ min длин.
    *
-   * <p><b>Examples:</b> occupiesCell([2,8],[3,9],1,8,9) → false; length=2 → true; length=0 → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(length); точные границы и отсутствие лишней мутации. Добавьте
-   * свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Обе координаты должны совпасть в одной позиции, не в разных
-   * сегментах.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param xs x сегментов
+   * @param ys y сегментов
+   * @param length число активных сегментов
+   * @param x x искомой клетки
+   * @param y y искомой клетки
+   * @return true, если клетка занята активным сегментом
    */
   public static boolean occupiesCell(int[] xs, int[] ys, int length, int x, int y) {
-    // TODO courier-snake.occupiesCell: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Движущийся хвост»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "courier-snake.occupiesCell", () -> false);
+    for (int i = 0; i < length; i++) if (xs[i] == x && ys[i] == y) return true;
+    return false;
   }
 }

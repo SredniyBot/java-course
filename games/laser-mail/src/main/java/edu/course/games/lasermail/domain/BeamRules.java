@@ -1,54 +1,61 @@
 package edu.course.games.lasermail.domain;
 
-/** Лазерная почта. Правила игры. Контракты упражнений: README.md. */
+/** Лазерная почта: операции над игровыми данными без интерфейса. */
 public final class BeamRules {
   private BeamRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Направления: 0 вправо,1 вниз,2 влево,3 вверх. Для /: 0→3,1→2,2→1,3→0;
-   * для обратного слеша: 0→1,1→0,2→3,3→2. Иначе направление не менять.
+   * Отражает направление луча от зеркала. В пустой клетке направление сохраняется.
    *
-   * <p><b>Constraints:</b> direction ∈ {0,1,2,3}; mirror любой char.
+   * <p>direction ∈ {0,1,2,3}; mirror любой char.
    *
-   * <p><b>Examples:</b> reflectDirection(0,'/') → 3; reflectDirection(3,'\\') → 2;
-   * reflectDirection(2,'.') → 2.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Перепутать / и \ легко; два отражения одним зеркалом возвращают
-   * направление.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param direction направление: 0 вправо, 1 вниз, 2 влево, 3 вверх
+   * @param mirror зеркало / или \; другое значение означает пустую клетку
+   * @return направление после отражения
    */
   public static int reflectDirection(int direction, char mirror) {
-    // TODO laser-mail.reflectDirection: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "laser-mail.reflectDirection", () -> direction);
+    if (mirror == '/') return 3 - direction;
+    if (mirror == '\\') return direction ^ 1;
+    return direction;
   }
 
   /**
-   * <b>WHAT / contract:</b> Проверить обе координаты: 0&lt;=r&lt;h и 0&lt;=c&lt;w.
+   * Проверяет принадлежность координат прямоугольному полю с индексами от нуля.
    *
-   * <p><b>Constraints:</b> h,w ≥0; r,c любые int.
+   * <p>h,w ≥0; r,c любые int.
    *
-   * <p><b>Examples:</b> isInsideGrid(0,0,1,1) → true; isInsideGrid(1,0,1,1) → false;
-   * isInsideGrid(0,0,0,1) → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Правая/нижняя границы исключены; отрицательные координаты
-   * недопустимы.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param r проверяемая строка
+   * @param c проверяемый столбец
+   * @param h число строк
+   * @param w число столбцов
+   * @return true для координат внутри поля
    */
   public static boolean isInsideGrid(int r, int c, int h, int w) {
-    // TODO laser-mail.isInsideGrid: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished("laser-mail.isInsideGrid", () -> false);
+    return r >= 0 && r < h && c >= 0 && c < w;
+  }
+
+  /**
+   * Рассчитывает маршрут луча до приёмника, выхода за поле или петли. В маршрут включаются
+   * начальная клетка и достигнутый приёмник. Приёмник проверяется до отражения от зеркала.
+   *
+   * <p>Петля — повтор тройки (строка, столбец, входящее направление). Повторное состояние в маршрут
+   * не добавляется. Возвращает независимый неизменяемый маршрут; поле не меняется.
+   *
+   * @param mirrors поле зеркал
+   * @param row строка старта
+   * @param col столбец старта
+   * @param direction входящее направление на старте: 0..3
+   * @param targetRow строка приёмника
+   * @param targetCol столбец приёмника
+   * @return неизменяемый маршрут и причина остановки
+   * @throws NullPointerException если mirrors равен null
+   * @throws IllegalArgumentException если нарушена форма поля, алфавит клеток, координаты
+   *     начала/цели или направление
+   */
+  public static BeamTrace trace(
+      char[][] mirrors, int row, int col, int direction, int targetRow, int targetCol) {
+    // TODO laser-mail.trace: реализуйте действие по контракту выше.
+    return edu.course.learning.ExercisePreview.unfinished(
+        "laser-mail.trace", () -> new BeamTrace(java.util.List.of(), BeamTrace.End.EXITED));
   }
 }

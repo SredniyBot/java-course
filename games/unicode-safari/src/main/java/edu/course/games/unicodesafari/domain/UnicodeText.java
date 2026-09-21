@@ -1,76 +1,49 @@
 package edu.course.games.unicodesafari.domain;
 
-/** Unicode-сафари. Правила игры. Контракты упражнений: README.md. */
+/** Unicode-сафари: операции над игровыми данными без интерфейса. */
 public final class UnicodeText {
   private UnicodeText() {}
 
   /**
-   * <b>WHAT / contract:</b> Посчитать Unicode-кодовые точки, не char. Используйте codePointCount на
-   * всей строке.
+   * Считает кодовые точки по правилам String.codePointCount. Суррогатная пара считается одной
+   * точкой; отдельный суррогат — также одной.
    *
-   * <p><b>Constraints:</b> text не null; корректный UTF-16. Графемные кластеры специально не
-   * считаем.
+   * <p>text не null; корректный UTF-16. Графемные кластеры специально не считаем.
    *
-   * <p><b>Examples:</b> countCodePoints("A😀") → 2; countCodePoints("é") → 2; countCodePoints("")
-   * → 0.
-   *
-   * <p><b>Acceptance criteria:</b> O(n); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> char, code point и видимый символ — три разных понятия.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param text текст, не null
+   * @return число кодовых точек
    */
   public static int countCodePoints(String text) {
-    // TODO unicode-safari.countCodePoints: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "unicode-safari.countCodePoints", () -> 0);
+    return text.codePointCount(0, text.length());
   }
 
   /**
-   * <b>WHAT / contract:</b> Число байтов при кодировании UTF-8; кодировку задать явно.
+   * Вычисляет число байтов, необходимых для кодирования текста в UTF-8.
    *
-   * <p><b>Constraints:</b> text не null; корректный UTF-16; кодировка UTF-8 без BOM.
+   * <p>text не null; корректный UTF-16; кодировка UTF-8 без BOM.
    *
-   * <p><b>Examples:</b> utf8Length("A😀") → 5; utf8Length("Я") → 2; utf8Length("") → 0.
-   *
-   * <p><b>Acceptance criteria:</b> O(n); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Не использовать defaultCharset; размер в памяти UTF-16 — не размер
-   * UTF-8.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param text корректный UTF-16 текст
+   * @return длина кодирования UTF-8 в байтах
    */
   public static int utf8Length(String text) {
-    // TODO unicode-safari.utf8Length: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished("unicode-safari.utf8Length", () -> 0);
+    return text.getBytes(java.nio.charset.StandardCharsets.UTF_8).length;
   }
 
   /**
-   * <b>WHAT / contract:</b> Вернуть первые n кодовых точек, не разрывая суррогатные пары. Если n
-   * больше количества, вернуть всю строку; n&gt;=0.
+   * Возвращает первые n кодовых точек текста, не разрывая суррогатную пару. Если точек меньше n,
+   * возвращает весь текст; при n=0 — пустую строку.
    *
-   * <p><b>Constraints:</b> text корректный UTF-16, не null; n≥0.
+   * <p>Следует правилам String.codePointCount: одиночный суррогат считается одной точкой.
+   * Комбинируемые знаки не объединяются с предыдущей буквой.
    *
-   * <p><b>Examples:</b> prefixByCodePoints("A😀B",2) → "A😀"; n=0 → ""; n=99 → вся строка.
-   *
-   * <p><b>Acceptance criteria:</b> O(text.length); точные границы и отсутствие лишней мутации.
-   * Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> substring(0,n) индексирует char; составная графема может
-   * разделиться по контракту.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param text текст, не null
+   * @param n максимальное число кодовых точек, неотрицательное
+   * @return префикс без разрыва суррогатной пары; весь текст, если n достаточно велик
+   * @throws NullPointerException если text равен null
+   * @throws IllegalArgumentException если n отрицателен
    */
   public static String prefixByCodePoints(String text, int n) {
-    // TODO unicode-safari.prefixByCodePoints: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO unicode-safari.prefixByCodePoints: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished(
         "unicode-safari.prefixByCodePoints", () -> "");
   }

@@ -1,53 +1,35 @@
 package edu.course.games.brickgarden.domain;
 
-/** Кирпичный сад. Правила игры. Контракты упражнений: README.md. */
+/** Кирпичный сад: операции над игровыми данными без интерфейса. */
 public final class BrickRules {
   private BrickRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Кирпичи начинаются с x=80, шаг 100, ширина 94, всего 8. Вернуть индекс
-   * или -1, включая промежутки.
+   * Находит кирпич под координатой удара. Восемь кирпичей начинаются с x=80, идут с шагом 100 и
+   * имеют ширину 94. Левая граница поверхности включена, правая исключена.
    *
-   * <p><b>Constraints:</b> x конечен, abs ≤ 10^6. Кирпич c занимает [80+100*c,174+100*c), c=0..7.
+   * <p>x конечен, abs ≤ 10^6. Кирпич c занимает [80+100*c,174+100*c), c=0..7.
    *
-   * <p><b>Examples:</b> columnAt(80) → 0; columnAt(173.9) → 0; columnAt(174) → -1; columnAt(180) →
-   * 1; columnAt(874) → -1.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Промежуток — не кирпич; приведение отрицательного double к int не
-   * заменяет floor.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param x x точки удара
+   * @return индекс кирпича 0..7 или -1 при попадании в щель либо за пределы стены
    */
   public static int columnAt(double x) {
-    // TODO brick-garden.columnAt: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Щели в кирпичной стене»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO brick-garden.columnAt: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished("brick-garden.columnAt", () -> -1);
   }
 
   /**
-   * <b>WHAT / contract:</b> Посчитать элементы &gt;0; массив прямоугольный, не null.
+   * Считает клетки с положительной прочностью. Нулевые и отрицательные значения не считаются
+   * кирпичами. Поле не изменяется.
    *
-   * <p><b>Constraints:</b> Ненулевой объект массива, строки не null; прямоугольный, в том числе 0
-   * строк или 0 столбцов.
+   * <p>Ненулевой объект массива, строки не null; прямоугольный, в том числе 0 строк или 0 столбцов.
    *
-   * <p><b>Examples:</b> countRemaining([[1,0],[-1,2]]) → 2; countRemaining([]) → 0.
-   *
-   * <p><b>Acceptance criteria:</b> O(h*w); точные границы и отсутствие лишней мутации. Добавьте
-   * свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Ненулевое отрицательное значение не считается кирпичом; вход не
-   * изменять.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param board поле кирпичей; положительное значение означает целый кирпич
+   * @return число положительных клеток
    */
   public static int countRemaining(int[][] board) {
-    // TODO brick-garden.countRemaining: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Щели в кирпичной стене»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished("brick-garden.countRemaining", () -> 0);
+    int n = 0;
+    for (int[] row : board) for (int v : row) if (v > 0) n++;
+    return n;
   }
 }

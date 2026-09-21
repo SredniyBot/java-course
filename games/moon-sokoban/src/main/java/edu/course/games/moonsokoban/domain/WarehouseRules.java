@@ -1,55 +1,41 @@
 package edu.course.games.moonsokoban.domain;
 
-/** Склад лунного сыра. Правила игры. Контракты упражнений: README.md. */
+/** Склад лунного сыра: операции над игровыми данными без интерфейса. */
 public final class WarehouseRules {
   private WarehouseRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Клетка (r,c) содержит ящик 2. Если следующая по направлению клетка
-   * внутри поля и равна 0, перенести ящик туда и вернуть true; иначе оставить поле и вернуть false.
+   * Перемещает ящик из (r,c) на одну клетку в заданном направлении, если клетка назначения
+   * свободна. При преграде или выходе за поле возвращает false без изменения поля. При успехе
+   * старая клетка становится пустой, новая содержит ящик.
    *
-   * <p><b>Constraints:</b> b непустой прямоугольный; (r,c) внутри и содержит 2; |dr|+|dc|=1; строки
-   * разные.
+   * <p>b непустой прямоугольный; (r,c) внутри и содержит 2; |dr|+|dc|=1; строки разные.
    *
-   * <p><b>Examples:</b> tryPushBox([[2,0]],0,0,0,1) → true, поле [[0,2]]; для [[2,1]] → false и
-   * поле неизменно.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> При заблокированном ходе нельзя сначала стереть исходный ящик;
-   * диагонали не входят в контракт.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param b изменяемое поле: 0 — пусто, 1 — стена, 2 — ящик
+   * @param r строка ящика
+   * @param c столбец ящика
+   * @param dr изменение строки на один ход
+   * @param dc изменение столбца на один ход
+   * @return true при перемещении ящика; false при преграде или выходе за поле
    */
   public static boolean tryPushBox(int[][] b, int r, int c, int dr, int dc) {
-    // TODO moon-sokoban.tryPushBox: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO moon-sokoban.tryPushBox: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished("moon-sokoban.tryPushBox", () -> false);
   }
 
   /**
-   * <b>WHAT / contract:</b> Каждая целевая клетка содержит ящик 2.
+   * Проверяет, стоит ли ящик на каждой целевой клетке. Ящики вне целей не мешают успеху. Поля не
+   * изменяются.
    *
-   * <p><b>Constraints:</b> b/goals одинакового прямоугольного размера; строки не null.
+   * <p>b/goals одинакового прямоугольного размера; строки не null.
    *
-   * <p><b>Examples:</b> b=[[2,0]], goals=[[true,false]] → true; goals=[[false,true]] → false; без
-   * целей → true.
-   *
-   * <p><b>Acceptance criteria:</b> O(h*w); точные границы и отсутствие лишней мутации. Добавьте
-   * свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Вне целей могут быть лишние ящики; они не мешают выполнению этого
-   * условия.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param b поле ящиков
+   * @param goals признаки целевых клеток той же формы
+   * @return true, если на каждой цели стоит ящик
    */
   public static boolean allGoalsOccupied(int[][] b, boolean[][] goals) {
-    // TODO moon-sokoban.allGoalsOccupied: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "moon-sokoban.allGoalsOccupied", () -> false);
+    for (int r = 0; r < b.length; r++)
+      for (int c = 0; c < b[r].length; c++) if (goals[r][c] && b[r][c] != 2) return false;
+    return true;
   }
 }

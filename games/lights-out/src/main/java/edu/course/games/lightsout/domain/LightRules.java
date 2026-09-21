@@ -1,52 +1,34 @@
 package edu.course.games.lightsout.domain;
 
-/** Ночной город. Правила игры. Контракты упражнений: README.md. */
+/** Ночной город: операции над игровыми данными без интерфейса. */
 public final class LightRules {
   private LightRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Инвертировать выбранную клетку и соседей по стороне внутри матрицы. Не
-   * трогать диагонали.
+   * Инвертирует выбранную лампу и существующих соседей по стороне. Диагональные и прочие клетки
+   * сохраняются. Изменяет поле на месте.
    *
-   * <p><b>Constraints:</b> Непустая прямоугольная матрица; row,col внутри; строки разные.
+   * <p>Непустая прямоугольная матрица; row,col внутри; строки разные.
    *
-   * <p><b>Examples:</b> toggleCross на пустом по значениям поле 2×2 в (0,0) →
-   * [[true,true],[true,false]]. Повторный вызов возвращает исходное поле.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Диагональ не переключать; центральную клетку переключить ровно один
-   * раз.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param a изменяемое поле ламп
+   * @param row строка центра переключения
+   * @param col столбец центра переключения
    */
   public static void toggleCross(boolean[][] a, int row, int col) {
-    // TODO lights-out.toggleCross: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO lights-out.toggleCross: реализуйте действие по контракту выше.
     edu.course.learning.ExercisePreview.unfinished("lights-out.toggleCross", () -> null);
   }
 
   /**
-   * <b>WHAT / contract:</b> True, если нет ни одного true.
+   * Проверяет, выключены ли все лампы. Поле не изменяется.
    *
-   * <p><b>Constraints:</b> a и строки не null; пустая матрица допустима.
+   * <p>a и строки не null; пустая матрица допустима.
    *
-   * <p><b>Examples:</b> allLightsOff([[false,false]]) → true; allLightsOff([[false,true]]) → false;
-   * allLightsOff([]) → true.
-   *
-   * <p><b>Acceptance criteria:</b> O(h*w); точные границы и отсутствие лишней мутации. Добавьте
-   * свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Проверка не меняет лампы; один true достаточен для false.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param a поле ламп; true означает включённую лампу
+   * @return true, если все лампы выключены
    */
   public static boolean allLightsOff(boolean[][] a) {
-    // TODO lights-out.allLightsOff: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished("lights-out.allLightsOff", () -> false);
+    for (boolean[] row : a) for (boolean v : row) if (v) return false;
+    return true;
   }
 }

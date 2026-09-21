@@ -1,53 +1,35 @@
 package edu.course.games.portalpong.domain;
 
-/** Пинг-понг с порталом. Правила игры. Контракты упражнений: README.md. */
+/** Пинг-понг с порталом: операции над игровыми данными без интерфейса. */
 public final class PaddlePhysics {
   private PaddlePhysics() {}
 
   /**
-   * <b>WHAT / contract:</b> Мяч попадает, если его центр находится в [top-10,top+120].
+   * Проверяет попадание центра мяча в вертикальный интервал [top − 10, top + 120]. Расширение
+   * относительно высоты ракетки учитывает радиус мяча.
    *
-   * <p><b>Constraints:</b> ballY и top конечны, abs ≤ 10^6.
+   * <p>ballY и top конечны, abs ≤ 10^6.
    *
-   * <p><b>Examples:</b> intersectsPaddle(90,100) → true; intersectsPaddle(220,100) → true; 89 и 221
-   * → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Ширина интервала включает радиус мяча; top+110 — не верхняя граница
-   * контракта.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param ballY y центра мяча
+   * @param top y верхнего края ракетки
+   * @return true при пересечении области ракетки
    */
   public static boolean intersectsPaddle(double ballY, double top) {
-    // TODO portal-pong.intersectsPaddle: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Управляемый отскок»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "portal-pong.intersectsPaddle", () -> false);
+    return ballY >= top - 10 && ballY <= top + 120;
   }
 
   /**
-   * <b>WHAT / contract:</b> Вернуть (ballY-(top+55)) 5: угол отскока зависит от места попадания.
+   * Вычисляет вертикальную скорость отскока как 5 × (ballY − (top + 55)). Удар в центр ракетки даёт
+   * ноль; удар ниже центра — положительную скорость.
    *
-   * <p><b>Constraints:</b> ballY и top конечны, abs ≤ 10^6.
+   * <p>ballY и top конечны, abs ≤ 10^6.
    *
-   * <p><b>Examples:</b> reflectedVerticalSpeed(155,100) → 0; reflectedVerticalSpeed(145,100) → -50;
-   * reflectedVerticalSpeed(165,100) → 50.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Вычитать надо центр ракетки top+55; знак определяет движение
-   * вверх/вниз.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param ballY y центра мяча при ударе
+   * @param top y верхнего края ракетки высотой 110
+   * @return вертикальная скорость после отскока
    */
   public static double reflectedVerticalSpeed(double ballY, double top) {
-    // TODO portal-pong.reflectedVerticalSpeed: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Управляемый отскок»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO portal-pong.reflectedVerticalSpeed: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished(
         "portal-pong.reflectedVerticalSpeed", () -> 0.0);
   }

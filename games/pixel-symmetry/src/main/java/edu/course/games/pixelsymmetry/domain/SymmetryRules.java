@@ -1,74 +1,52 @@
 package edu.course.games.pixelsymmetry.domain;
 
-/** Мастерская симметрии. Правила игры. Контракты упражнений: README.md. */
+/** Мастерская симметрии: операции над игровыми данными без интерфейса. */
 public final class SymmetryRules {
   private SymmetryRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Поставить цвет в клетку. Если индексы вне матрицы, ничего не менять.
+   * Меняет цвет одной клетки. Координаты вне изображения игнорируются, остальные клетки
+   * сохраняются.
    *
-   * <p><b>Constraints:</b> image не null; строки не null, прямоугольность не обязательна; row,col
-   * любые int; color любой int.
+   * <p>image не null; строки не null, прямоугольность не обязательна; row,col любые int; color
+   * любой int.
    *
-   * <p><b>Examples:</b> paintCell([[1,2]],0,1,9) → [[1,9]]; row=-1 или col=2 → без изменений.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Выход за край здесь штатный no-op, а не исключение.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param image изменяемое изображение
+   * @param row строка кисти
+   * @param col столбец кисти
+   * @param color значение нового цвета
    */
   public static void paintCell(int[][] image, int row, int col, int color) {
-    // TODO pixel-symmetry.paintCell: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    edu.course.learning.ExercisePreview.unfinished("pixel-symmetry.paintCell", () -> null);
+    if (row >= 0 && row < image.length && col >= 0 && col < image[row].length)
+      image[row][col] = color;
   }
 
   /**
-   * <b>WHAT / contract:</b> Скопировать левую половину в правую, отражая относительно вертикальной
-   * оси. Нечётную центральную колонку сохранить.
+   * Копирует левую половину каждой строки в зеркальные позиции правой половины. Исходная левая
+   * половина и средний столбец при нечётной ширине сохраняются. Изменяет существующие строки на
+   * месте.
    *
-   * <p><b>Constraints:</b> Строки не null и разные объекты; допустимы разная длина и пустые строки.
+   * <p>Строки не null и разные объекты; допустимы разная длина и пустые строки.
    *
-   * <p><b>Examples:</b> mirrorLeftToRight([[1,2,3,4,5]]) → [[1,2,3,2,1]].
-   *
-   * <p><b>Acceptance criteria:</b> O(числа элементов), O(1) доп. памяти; точные границы и
-   * отсутствие лишней мутации. Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Копировать слева направо только половину; среднюю колонку не
-   * менять.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param image изображение, правая половина которого будет изменена
    */
   public static void mirrorLeftToRight(int[][] image) {
-    // TODO pixel-symmetry.mirrorLeftToRight: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO pixel-symmetry.mirrorLeftToRight: реализуйте действие по контракту выше.
     edu.course.learning.ExercisePreview.unfinished("pixel-symmetry.mirrorLeftToRight", () -> null);
   }
 
   /**
-   * <b>WHAT / contract:</b> Проверить горизонтальное отражение в каждой строке. Не менять матрицу.
+   * Проверяет зеркальную симметрию каждой строки относительно её середины. Изображение не
+   * изменяется.
    *
-   * <p><b>Constraints:</b> image и строки не null, в том числе пустые и разной длины.
+   * <p>image и строки не null, в том числе пустые и разной длины.
    *
-   * <p><b>Examples:</b> isHorizontallySymmetric([[1,2,1],[]]) → true;
-   * isHorizontallySymmetric([[1,2]]) → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(числа элементов); точные границы и отсутствие лишней мутации.
-   * Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Проверка ничего не исправляет; пустая строка симметрична.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param image изображение для проверки
+   * @return true, если строки зеркально симметричны
    */
   public static boolean isHorizontallySymmetric(int[][] image) {
-    // TODO pixel-symmetry.isHorizontallySymmetric: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "pixel-symmetry.isHorizontallySymmetric", () -> false);
+    for (int[] row : image)
+      for (int c = 0; c < row.length / 2; c++) if (row[c] != row[row.length - 1 - c]) return false;
+    return true;
   }
 }

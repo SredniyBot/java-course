@@ -1,54 +1,39 @@
 package edu.course.games.starcourier.domain;
 
-/** Звёздный курьер. Правила игры. Контракты упражнений: README.md. */
+/** Звёздный курьер: операции над игровыми данными без интерфейса. */
 public final class CourierRules {
   private CourierRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Вернуть value в замкнутом диапазоне [min,max]. min &lt;= max.
+   * Ограничивает координату замкнутым интервалом. Значение внутри интервала возвращается без
+   * изменения.
    *
-   * <p><b>Constraints:</b> Все числа конечны, abs ≤ 10^6; min ≤ max.
+   * <p>Все числа конечны, abs ≤ 10^6; min ≤ max.
    *
-   * <p><b>Examples:</b> clampCoordinate(-2,0,9) → 0; clampCoordinate(4,0,9) → 4;
-   * clampCoordinate(15,0,9) → 9; clampCoordinate(2,3,3) → 3.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Нельзя возвращать min для любого значения; равные границы
-   * допустимы.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param value исходная координата
+   * @param min нижняя граница включительно
+   * @param max верхняя граница включительно
+   * @return координата в заданном замкнутом интервале
    */
   public static double clampCoordinate(double value, double min, double max) {
-    // TODO star-courier.clampCoordinate: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Груз у кромки экрана»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "star-courier.clampCoordinate", () -> (min + max) / 2);
+    return Math.max(min, Math.min(max, value));
   }
 
   /**
-   * <b>WHAT / contract:</b> Центры касаются, если квадрат расстояния &lt;= radius². Считать касание
-   * границы попаданием.
+   * Проверяет, попадает ли центр груза в круг подбора вокруг курьера. Точка на окружности считается
+   * попаданием; нулевой радиус допускает только совпадающие центры.
    *
-   * <p><b>Constraints:</b> Конечные координаты с abs ≤ 10^6; radius от 0 до 10^6.
+   * <p>Конечные координаты с abs ≤ 10^6; radius от 0 до 10^6.
    *
-   * <p><b>Examples:</b> isWithinRadius(0,0,3,4,5) → true; radius=4 → false; совпавшие центры и
-   * radius=0 → true.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Граница включена: &lt;=, не &lt;; сравнивайте величины в одинаковых
-   * единицах.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param x x центра курьера
+   * @param y y центра курьера
+   * @param tx x центра груза
+   * @param ty y центра груза
+   * @param radius радиус подбора, неотрицательный
+   * @return true, если расстояние до груза не превышает радиус
    */
   public static boolean isWithinRadius(double x, double y, double tx, double ty, double radius) {
-    // TODO star-courier.isWithinRadius: реализуйте WHAT/contract из Javadoc выше.
-    // Исследование «Груз у кромки экрана»: сценарий и обязательная новая часть — README.md.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO star-courier.isWithinRadius: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished(
         "star-courier.isWithinRadius", () -> false);
   }

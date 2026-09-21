@@ -1,54 +1,55 @@
 package edu.course.games.ballisticmail.domain;
 
-/** Баллистическая почта. Правила игры. Контракты упражнений: README.md. */
+/** Баллистическая почта: операции над игровыми данными без интерфейса. */
 public final class TrajectoryPhysics {
   private TrajectoryPhysics() {}
 
   /**
-   * <b>WHAT / contract:</b> Вернуть Velocity(x, y): vx=cos(toRadians(angle))*speed,
-   * vy=-sin(toRadians(angle))*speed. Ось y экрана направлена вниз.
+   * Разлагает скорость броска на горизонтальную и вертикальную компоненты. Угол задан в градусах;
+   * положительный угол направляет бросок вверх, поэтому вертикальная компонента отрицательна.
    *
-   * <p><b>Constraints:</b> angle конечен abs≤36000 градусов; speed конечен ∈[0,10^6].
+   * <p>angle конечен abs≤36000 градусов; speed конечен ∈[0,10^6].
    *
-   * <p><b>Examples:</b> initialVelocity(0,10) → Velocity(10,0); initialVelocity(90,10) →
-   * Velocity(≈0,-10). Допуск проверок 1e-8.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> sin/cos принимают радианы; результат — value object, не массив с
-   * магическими индексами.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param angle угол броска в градусах
+   * @param speed начальный модуль скорости
+   * @return компоненты скорости в экранных координатах
    */
   public static Velocity initialVelocity(double angle, double speed) {
-    // TODO ballistic-mail.initialVelocity: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "ballistic-mail.initialVelocity", () -> new Velocity(0, 0));
+    double rad = Math.toRadians(angle);
+    return new Velocity(Math.cos(rad) * speed, -Math.sin(rad) * speed);
   }
 
   /**
-   * <b>WHAT / contract:</b> Попадание при |x-target|&lt;=halfWidth.
+   * Проверяет попадание x в интервал [target − halfWidth, target + halfWidth]. Обе границы
+   * включены.
    *
-   * <p><b>Constraints:</b> Конечные x,target abs≤10^6; halfWidth ∈[0,10^6].
+   * <p>Конечные x,target abs≤10^6; halfWidth ∈[0,10^6].
    *
-   * <p><b>Examples:</b> isWithinTarget(60,100,40) → true; isWithinTarget(140,100,40) → true;
-   * isWithinTarget(141,100,40) → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Обе границы включены; направление экранной y здесь не участвует.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param x x точки приземления
+   * @param target x центра приёмника
+   * @param halfWidth половина ширины приёмника
+   * @return true при попадании в замкнутый интервал приёмника
    */
   public static boolean isWithinTarget(double x, double target, double halfWidth) {
-    // TODO ballistic-mail.isWithinTarget: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "ballistic-mail.isWithinTarget", () -> false);
+    return Math.abs(x - target) <= halfWidth;
+  }
+
+  /**
+   * Выполняет один шаг полёта с ускорением 160 единиц/с² вниз. Сначала вычисляет vyNext = vy + 160
+   * × dt, затем xNext = x + vx × dt и yNext = y + vyNext × dt. Горизонтальная скорость сохраняется.
+   *
+   * <p>Возвращает новое значение состояния. Исходное состояние неизменно, в том числе при отказе.
+   * При dt=0 результат равен исходному значению.
+   *
+   * @param state состояние перед шагом
+   * @param dt длительность шага в секундах, от 0 до 1
+   * @return состояние после одного шага
+   * @throws NullPointerException если state равен null
+   * @throws IllegalArgumentException если dt не конечен, вне [0,1] или результат содержит
+   *     бесконечность
+   */
+  public static FlightState advance(FlightState state, double dt) {
+    // TODO ballistic-mail.advance: реализуйте действие по контракту выше.
+    return edu.course.learning.ExercisePreview.unfinished("ballistic-mail.advance", () -> state);
   }
 }

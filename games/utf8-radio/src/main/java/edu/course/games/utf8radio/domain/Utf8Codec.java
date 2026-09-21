@@ -1,54 +1,57 @@
 package edu.course.games.utf8radio.domain;
 
-/** Радио UTF-8. Правила игры. Контракты упражнений: README.md. */
+/** Радио UTF-8: операции над игровыми данными без интерфейса. */
 public final class Utf8Codec {
   private Utf8Codec() {}
 
   /**
-   * <b>WHAT / contract:</b> Представить byte как целое 0…255.
+   * Представляет восемь бит byte как неотрицательное целое без изменения битового рисунка.
    *
-   * <p><b>Constraints:</b> Любое значение byte от -128 до 127.
+   * <p>Любое значение byte от -128 до 127.
    *
-   * <p><b>Examples:</b> toUnsigned((byte)-1) → 255; toUnsigned((byte)-128) → 128;
-   * toUnsigned((byte)0) → 0.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Обычный cast в int сохраняет знак.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param value байт со знаком
+   * @return значение байта от 0 до 255
    */
   public static int toUnsigned(byte value) {
-    // TODO utf8-radio.toUnsigned: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished("utf8-radio.toUnsigned", () -> 0);
+    return value & 0xFF;
   }
 
   /**
-   * <b>WHAT / contract:</b> Строго декодировать первые count байтов UTF-8. При
-   * CharacterCodingException вернуть строку &lt;ошибка&gt;. Остаток массива не читать.
+   * Вызывает decodeStrict и преобразует только CharacterCodingException в строку «&lt;ошибка&gt;»
+   * для интерфейса. Ошибки аргументов не перехватывает.
    *
-   * <p><b>Constraints:</b> packet не null; 0≤count≤packet.length. При некорректном/обрезанном UTF-8
-   * вернуть ровно &lt;ошибка&gt;.
+   * <p>packet не null; 0≤count≤packet.length. При некорректном/обрезанном UTF-8 вернуть ровно
+   * &lt;ошибка&gt;.
    *
-   * <p><b>Examples:</b> decodePrefix([0x41,0xFF],1) → "A"; count=2 → "&lt;ошибка&gt;"; count=0 →
-   * ""; одиночный 0xD0 → "&lt;ошибка&gt;".
-   *
-   * <p><b>Acceptance criteria:</b> O(count); точные границы и отсутствие лишней мутации. Добавьте
-   * свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> new String заменяет ошибочные байты без отказа; хвост после count
-   * не декодировать.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param packet буфер принятого сообщения
+   * @param count число байтов для декодирования
+   * @return декодированный текст или строка «&lt;ошибка&gt;» при ошибке UTF-8
    */
   public static String decodePrefix(byte[] packet, int count) {
-    // TODO utf8-radio.decodePrefix: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "utf8-radio.decodePrefix", () -> "<не реализовано>");
+    try {
+      return decodeStrict(packet, count);
+    } catch (java.nio.charset.CharacterCodingException ex) {
+      return "<ошибка>";
+    }
+  }
+
+  /**
+   * Декодирует первые count байтов как полный текст UTF-8. Отклоняет некорректные и оборванные
+   * последовательности, не подставляя символ замены.
+   *
+   * <p>Хвост массива не читается. Исходный массив не изменяется; count=0 даёт пустую строку.
+   *
+   * @param packet буфер принятого сообщения
+   * @param count число байтов для декодирования
+   * @return декодированный текст, в том числе пустая строка
+   * @throws NullPointerException если packet равен null
+   * @throws IndexOutOfBoundsException если count вне диапазона 0..packet.length
+   * @throws java.nio.charset.CharacterCodingException если выбранный префикс не является полным
+   *     корректным UTF-8
+   */
+  public static String decodeStrict(byte[] packet, int count)
+      throws java.nio.charset.CharacterCodingException {
+    // TODO utf8-radio.decodeStrict: реализуйте действие по контракту выше.
+    return edu.course.learning.ExercisePreview.unfinished("utf8-radio.decodeStrict", () -> "");
   }
 }

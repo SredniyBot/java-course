@@ -1,53 +1,34 @@
 package edu.course.games.colorflood.domain;
 
-/** Цветной прилив. Правила игры. Контракты упражнений: README.md. */
+/** Цветной прилив: операции над игровыми данными без интерфейса. */
 public final class FloodRules {
   private FloodRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Перекрасить компоненту клетки [0][0] по четырём сторонам. Использовать
-   * очередь из двух int[] размером h w. Помечать клетку новым цветом ДО добавления. Если цвет не
-   * меняется, сразу выйти.
+   * Перекрашивает в color связную область исходного цвета, содержащую клетку (0,0). Связность
+   * определяется только соседством по стороне. Другие области сохраняются; при совпадении цветов
+   * поле не меняется.
    *
-   * <p><b>Constraints:</b> Непустая прямоугольная матрица width&gt;0; h*w ≤ 10^6; строки разные;
-   * любой int цвет.
+   * <p>Непустая прямоугольная матрица width&gt;0; h*w ≤ 10^6; строки разные; любой int цвет.
    *
-   * <p><b>Examples:</b> fillFromOrigin([[1,2],[2,1]],9) → [[9,2],[2,1]]; color=1 ничего не меняет.
-   *
-   * <p><b>Acceptance criteria:</b> O(h*w) времени/памяти; точные границы и отсутствие лишней
-   * мутации. Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Диагональ не связана. Отмечайте посещение до добавления в очередь;
-   * тот же цвет — немедленный выход.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param a изменяемое прямоугольное поле цветов
+   * @param color новый цвет связной области
    */
   public static void fillFromOrigin(int[][] a, int color) {
-    // TODO color-flood.fillFromOrigin: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO color-flood.fillFromOrigin: реализуйте действие по контракту выше.
     edu.course.learning.ExercisePreview.unfinished("color-flood.fillFromOrigin", () -> null);
   }
 
   /**
-   * <b>WHAT / contract:</b> Все значения равны a[0][0]. Матрица непустая.
+   * Проверяет, имеют ли все клетки цвет клетки (0,0). Поле не изменяется.
    *
-   * <p><b>Constraints:</b> Непустая прямоугольная матрица width&gt;0.
+   * <p>Непустая прямоугольная матрица width&gt;0.
    *
-   * <p><b>Examples:</b> isUniform([[2,2],[2,2]]) → true; isUniform([[2,3]]) → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(h*w); точные границы и отсутствие лишней мутации. Добавьте
-   * свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Не требуются определённые цвета, только равенство; вход
-   * сохраняется.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param a поле цветов
+   * @return true, если все клетки одного цвета
    */
   public static boolean isUniform(int[][] a) {
-    // TODO color-flood.isUniform: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished("color-flood.isUniform", () -> false);
+    for (int[] row : a) for (int v : row) if (v != a[0][0]) return false;
+    return true;
   }
 }

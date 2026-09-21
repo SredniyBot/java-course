@@ -79,8 +79,17 @@ public final class FactoryRobotGame implements DesktopGame {
     if (key == KeyEvent.VK_BACK_SPACE && !input.isEmpty())
       input = input.substring(0, input.length() - 1);
     if (key == KeyEvent.VK_ENTER) {
-      if (runner.start(input)) elapsedSeconds = 0;
-      else session.status("Используйте F, L, R");
+      try {
+        String program =
+            edu.course.games.factoryrobot.domain.RobotRules.readProgram(
+                new java.io.StringReader(input));
+        if (runner.start(program)) elapsedSeconds = 0;
+        else session.status("Загрузчик программы ещё не реализован");
+      } catch (edu.course.games.factoryrobot.domain.ProgramFormatException ex) {
+        session.status("Ошибка программы в позиции " + ex.offset() + ": " + ex.getMessage());
+      } catch (edu.course.games.factoryrobot.domain.ProgramLoadException ex) {
+        session.status("Не удалось прочитать программу: " + ex.getCause().getMessage());
+      }
     }
   }
 

@@ -1,54 +1,35 @@
 package edu.course.games.wordrain.domain;
 
-/** Словопад. Правила игры. Контракты упражнений: README.md. */
+/** Словопад: операции над игровыми данными без интерфейса. */
 public final class WordRules {
   private WordRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Убрать пробелы по краям и привести к нижнему регистру с Locale.ROOT.
+   * Удаляет краевые пробельные символы по правилам String.strip и переводит текст в нижний регистр
+   * с Locale.ROOT. Внутренние пробелы сохраняются.
    *
-   * <p><b>Constraints:</b> text не null; используются правила String.strip и Locale.ROOT,
-   * внутренние пробелы сохраняются.
+   * <p>text не null; используются правила String.strip и Locale.ROOT, внутренние пробелы
+   * сохраняются.
    *
-   * <p><b>Examples:</b> normalizeInput(" JAVA ") → "java"; normalizeInput("A B") → "a b";
-   * normalizeInput("") → "".
-   *
-   * <p><b>Acceptance criteria:</b> O(n); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> trim и strip различаются; регистр не должен зависеть от системной
-   * локали.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param text введённый текст, не null
+   * @return текст без краевых пробелов, в нижнем регистре Locale.ROOT
    */
   public static String normalizeInput(String text) {
-    // TODO word-rain.normalizeInput: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO word-rain.normalizeInput: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished("word-rain.normalizeInput", () -> text);
   }
 
   /**
-   * <b>WHAT / contract:</b> Вернуть true, если word начинается с input. Пустой input является
-   * префиксом.
+   * Проверяет, начинается ли слово с input. Сравнение чувствительно к регистру; пустой ввод
+   * является префиксом любого слова.
    *
-   * <p><b>Constraints:</b> word и input не null; сравнение регистрозависимое, дополнительной
-   * нормализации нет.
+   * <p>word и input не null; сравнение регистрозависимое, дополнительной нормализации нет.
    *
-   * <p><b>Examples:</b> isPrefix("java","") → true; isPrefix("java","jav") → true;
-   * isPrefix("java","Java") → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(input.length); точные границы и отсутствие лишней мутации.
-   * Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Присутствие подстроки не означает префикс; пустая строка — префикс.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param word слово для сравнения
+   * @param input уже нормализованный ввод
+   * @return true, если слово начинается с введённого текста
    */
   public static boolean isPrefix(String word, String input) {
-    // TODO word-rain.isPrefix: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished("word-rain.isPrefix", () -> false);
+    return word.startsWith(input);
   }
 }

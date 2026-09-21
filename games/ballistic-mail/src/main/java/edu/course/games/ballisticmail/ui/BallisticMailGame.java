@@ -45,9 +45,15 @@ public final class BallisticMailGame implements DesktopGame {
   @Override
   public void update(double dt) {
     if (!flying) return;
-    verticalSpeed += 160 * dt;
-    projectileX += horizontalSpeed * dt;
-    projectileY += verticalSpeed * dt;
+    var next =
+        TrajectoryPhysics.advance(
+            new edu.course.games.ballisticmail.domain.FlightState(
+                projectileX, projectileY, horizontalSpeed, verticalSpeed),
+            dt);
+    projectileX = next.x();
+    projectileY = next.y();
+    horizontalSpeed = next.vx();
+    verticalSpeed = next.vy();
     if (projectileY >= 560) {
       flying = false;
       if (TrajectoryPhysics.isWithinTarget(projectileX, targetX, 40)) {

@@ -41,24 +41,21 @@ public final class LaserMailGame implements DesktopGame {
   @Override
   public void onKeyPressed(int key) {
     if (key != 32) return;
-    beam = 0;
-    int r = 1, c = 0, d = 0;
-    int[] dr = {0, 1, 0, -1}, dc = {1, 0, -1, 0};
-    boolean[][][] visited = new boolean[9][9][4];
-    while (BeamRules.isInsideGrid(r, c, 9, 9) && beam < 200) {
-      if (visited[r][c][d]) break;
-      visited[r][c][d] = true;
-      br[beam] = r;
-      bc[beam++] = c;
-      if (r == 7 && c == 7) {
-        context.end("Письмо доставлено светом!");
-        return;
-      }
-      d = BeamRules.reflectDirection(d, mirrors[r][c]);
-      r += dr[d];
-      c += dc[d];
+    var trace = BeamRules.trace(mirrors, 1, 0, 0, 7, 7);
+    beam = trace.cells().size();
+    br = new int[beam];
+    bc = new int[beam];
+    for (int i = 0; i < beam; i++) {
+      br[i] = trace.cells().get(i).row();
+      bc[i] = trace.cells().get(i).col();
     }
-    context.status("Луч не дошёл. Поверните зеркала");
+    if (trace.end() == edu.course.games.lasermail.domain.BeamTrace.End.DELIVERED)
+      context.end("Письмо доставлено светом!");
+    else
+      context.status(
+          trace.end() == edu.course.games.lasermail.domain.BeamTrace.End.LOOP
+              ? "Луч попал в петлю. Поверните зеркала"
+              : "Луч вышел за поле. Поверните зеркала");
   }
 
   @Override

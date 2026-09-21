@@ -1,55 +1,42 @@
 package edu.course.games.wordmaze.domain;
 
-/** Буквенный лабиринт. Правила игры. Контракты упражнений: README.md. */
+/** Буквенный лабиринт: операции над игровыми данными без интерфейса. */
 public final class WordPathRules {
   private WordPathRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Индексы одной сетки. Разрешено соседство только по стороне, без
-   * переноса между строками.
+   * Проверяет соседство двух линейных индексов по стороне. Конец одной строки и начало следующей не
+   * являются соседями; диагональ также не учитывается.
    *
-   * <p><b>Constraints:</b> width&gt;0, a,b ≥0, до 10^6; индексы одной сетки в построчной нумерации.
+   * <p>width&gt;0, a,b ≥0, до 10^6; индексы одной сетки в построчной нумерации.
    *
-   * <p><b>Examples:</b> areSideNeighbors(2,3,3) → false; areSideNeighbors(1,4,3) → true;
-   * areSideNeighbors(1,1,3) → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(1); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Разность индексов 1 может пересекать границу строки; диагональ не
-   * сосед.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param a линейный индекс первой клетки
+   * @param b линейный индекс второй клетки
+   * @param width число столбцов поля
+   * @return true для соседства по стороне
    */
   public static boolean areSideNeighbors(int a, int b, int width) {
-    // TODO word-maze.areSideNeighbors: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "word-maze.areSideNeighbors", () -> false);
+    return Math.abs(a / width - b / width) + Math.abs(a % width - b % width) == 1;
   }
 
   /**
-   * <b>WHAT / contract:</b> Собрать буквы первых length индексов path в строку. Ширина
-   * board[0].length.
+   * Собирает строку из первых length клеток пути. Линейный индекс переводится в строку и столбец по
+   * ширине поля. Повторы и несоседние клетки допустимы.
    *
-   * <p><b>Constraints:</b> board непустой прямоугольный, width&gt;0; path не null;
-   * 0≤length≤path.length; первые length индексов внутри board.
+   * <p>Не читает хвост path после length и не изменяет входные данные. Проверку соседства выбранных
+   * клеток выполняет вызывающий код.
    *
-   * <p><b>Examples:</b> readPath([[J,A],[V,A]],[0,1,2,3],4) → "JAVA"; length=0 → "".
-   *
-   * <p><b>Acceptance criteria:</b> O(length); точные границы и отсутствие лишней мутации. Добавьте
-   * свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Используется ширина, а не высота; элементы path после length не
-   * читать.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param board прямоугольное поле букв
+   * @param path линейные индексы клеток в порядке чтения
+   * @param length число читаемых индексов; остальной хвост не используется
+   * @return буквы активного пути без разделителей
+   * @throws NullPointerException если board или path равен null
+   * @throws IllegalArgumentException если поле пустое, содержит null-строки, непрямоугольно либо
+   *     length вне 0..path.length
+   * @throws IndexOutOfBoundsException если активный индекс пути не принадлежит полю
    */
   public static String readPath(char[][] board, int[] path, int length) {
-    // TODO word-maze.readPath: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO word-maze.readPath: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished("word-maze.readPath", () -> "");
   }
 }

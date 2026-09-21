@@ -1,57 +1,39 @@
 package edu.course.games.balloonrescue.domain;
 
-/** Спасите воздушный шар. Правила игры. Контракты упражнений: README.md. */
+/** Спасите воздушный шар: операции над игровыми данными без интерфейса. */
 public final class WordMask {
   private WordMask() {}
 
   /**
-   * <b>WHAT / contract:</b> Для каждой буквы word добавить саму букву, если она встречается в
-   * guessed, иначе _. После каждой позиции добавить пробел.
+   * Строит маску слова: угаданные символы сохраняются, остальные заменяются подчёркиванием. После
+   * каждого символа, включая последний, добавляется один пробел. Все вхождения угаданной буквы
+   * открываются одновременно.
    *
-   * <p><b>Constraints:</b> word/guessed не null, состоят из BMP-букв без суррогатов. Регистр
-   * значим; пустые строки допустимы.
+   * <p>word/guessed не null, состоят из BMP-букв без суррогатов. Регистр значим; пустые строки
+   * допустимы.
    *
-   * <p><b>Examples:</b> revealGuessedLetters("JAVA","A") → "_ A _ A "; revealGuessedLetters("","")
-   * → "".
-   *
-   * <p><b>Acceptance criteria:</b> O(word.length*guessed.length); точные границы и отсутствие
-   * лишней мутации. Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> После последнего символа тоже пробел; повторные буквы открываются
-   * вместе.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param word слово из символов BMP
+   * @param guessed угаданные символы; повторы допускаются
+   * @return открытые буквы и подчёркивания; после каждого символа стоит пробел
    */
   public static String revealGuessedLetters(String word, String guessed) {
-    // TODO balloon-rescue.revealGuessedLetters: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO balloon-rescue.revealGuessedLetters: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished(
         "balloon-rescue.revealGuessedLetters", () -> "_ ".repeat(word.length()));
   }
 
   /**
-   * <b>WHAT / contract:</b> Все буквы word встречаются в guessed. Повторы не требуют повторных
-   * догадок.
+   * Проверяет, входит ли каждый символ слова в guessed. Порядок и повторения угаданных символов не
+   * влияют на результат. Для пустого слова возвращает true.
    *
-   * <p><b>Constraints:</b> Те же ограничения на строки, что у revealGuessedLetters.
+   * <p>Те же ограничения на строки, что у revealGuessedLetters.
    *
-   * <p><b>Examples:</b> isFullyGuessed("JAVA","JAV") → true; isFullyGuessed("JAVA","JA") → false;
-   * isFullyGuessed("","") → true.
-   *
-   * <p><b>Acceptance criteria:</b> O(word.length*guessed.length); точные границы и отсутствие
-   * лишней мутации. Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Количество догадок не равно количеству открытых букв; повторы
-   * игнорируются.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param word слово из символов BMP
+   * @param guessed угаданные символы
+   * @return true, если угаданы все буквы слова
    */
   public static boolean isFullyGuessed(String word, String guessed) {
-    // TODO balloon-rescue.isFullyGuessed: реализуйте WHAT/contract из Javadoc выше.
-    // Выберите алгоритм и запишите инвариант; соблюдайте constraints и владение массивами.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "balloon-rescue.isFullyGuessed", () -> false);
+    for (int i = 0; i < word.length(); i++) if (guessed.indexOf(word.charAt(i)) < 0) return false;
+    return true;
   }
 }

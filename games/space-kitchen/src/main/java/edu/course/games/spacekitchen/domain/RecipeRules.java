@@ -1,53 +1,38 @@
 package edu.course.games.spacekitchen.domain;
 
-/** Космическая кухня. Правила игры. Контракты упражнений: README.md. */
+/** Космическая кухня: операции над игровыми данными без интерфейса. */
 public final class RecipeRules {
   private RecipeRules() {}
 
   /**
-   * <b>WHAT / contract:</b> Разделить непустую строку по запятым с сохранением пустых полей; каждый
-   * фрагмент strip + lowercase ROOT. Пустая или blank строка даёт массив длины 0.
+   * Разбивает заказ по запятым, удаляет краевые пробелы каждого поля и переводит поля в нижний
+   * регистр с Locale.ROOT. Сохраняет порядок, повторения и пустые поля. Полностью пробельная строка
+   * означает пустой заказ.
    *
-   * <p><b>Constraints:</b> line не null; пустые поля сохраняются только для неblank строки.
+   * <p>line не null; пустые поля сохраняются только для неblank строки.
    *
-   * <p><b>Examples:</b> parseIngredients(" A,,B, ") → ["a","","b",""]; parseIngredients(" ") → [].
-   *
-   * <p><b>Acceptance criteria:</b> O(n); точные границы и отсутствие лишней мутации. Добавьте свой
-   * случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> split без отрицательного limit удаляет хвостовые пустые поля;
-   * Locale.ROOT обязателен.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param line ингредиенты, разделённые запятыми
+   * @return нормализованные ингредиенты в исходном порядке
    */
   public static String[] parseIngredients(String line) {
-    // TODO space-kitchen.parseIngredients: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
-    return edu.course.learning.ExercisePreview.unfinished(
-        "space-kitchen.parseIngredients", () -> new String[] {line});
+    if (line.isBlank()) return new String[0];
+    String[] a = line.split(",", -1);
+    for (int i = 0; i < a.length; i++) a[i] = a[i].strip().toLowerCase(java.util.Locale.ROOT);
+    return a;
   }
 
   /**
-   * <b>WHAT / contract:</b> Проверить одинаковый набор с учётом повторов, порядок не важен.
-   * Исходные массивы не менять. Можно сортировать копии.
+   * Сравнивает наборы ингредиентов без учёта порядка, но с учётом повторений. Строки сравниваются
+   * точно, без нормализации. Входные массивы не изменяются.
    *
-   * <p><b>Constraints:</b> a,b и их строки не null; сравнение точное и регистрозависимое.
+   * <p>a,b и их строки не null; сравнение точное и регистрозависимое.
    *
-   * <p><b>Examples:</b> hasSameIngredients(["a","b","a"],["b","a","a"]) → true; ["a","a"] против
-   * ["a"] → false.
-   *
-   * <p><b>Acceptance criteria:</b> O(n log n+m log m), O(n+m) памяти; точные границы и отсутствие
-   * лишней мутации. Добавьте свой случай из допустимого домена.
-   *
-   * <p><b>Typical pitfalls:</b> Set теряет повторы; сортировать входные массивы запрещено.
-   *
-   * <p>Входы вне constraints не специфицированы. См. README.md.
+   * @param a первый набор ингредиентов
+   * @param b второй набор ингредиентов
+   * @return true, если совпадают значения и число повторений каждого ингредиента
    */
   public static boolean hasSameIngredients(String[] a, String[] b) {
-    // TODO space-kitchen.hasSameIngredients: реализуйте WHAT/contract из Javadoc выше.
-    // Спроектируйте внутренний API в DESIGN.md; этот метод — адаптер для готового UI.
-    // Acceptance: примеры, границы, допустимая мутация и сложность — README.md.
+    // TODO space-kitchen.hasSameIngredients: реализуйте действие по контракту выше.
     return edu.course.learning.ExercisePreview.unfinished(
         "space-kitchen.hasSameIngredients", () -> false);
   }
