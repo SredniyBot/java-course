@@ -1,0 +1,9 @@
+**/target/
+.idea/
+*.iml
+.vscode/
+.DS_Store
+*.log
+.m2/
+__pycache__/
+*.py[cod]

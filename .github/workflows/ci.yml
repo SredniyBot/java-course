@@ -1,0 +1,27 @@
+name: Exercise acceptance
+on:
+  workflow_dispatch:
+    inputs:
+      game:
+        description: Module to check, for example star-courier
+        required: true
+        default: star-courier
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+      - name: Validate selection and run real acceptance tests
+        env:
+          GAME: ${{ inputs.game }}
+        run: |
+          [[ "$GAME" =~ ^[a-z][a-z0-9-]*$ ]] || exit 1
+          chmod +x mvnw
+          ./mvnw -B -ntp -pl ":$GAME" -am verify
